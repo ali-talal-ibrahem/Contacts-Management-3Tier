@@ -396,9 +396,12 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
+
+*.slnx
+
 # JetBrains Rider
 *.sln.iml
-
+*csproj
 
 
 ### VisualStudio Patch ###
