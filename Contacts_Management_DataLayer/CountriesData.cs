@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contacts_Mangement_DataLayer
+namespace Contacts_Management_DataLayer
 {
     internal class CountriesData
     {
