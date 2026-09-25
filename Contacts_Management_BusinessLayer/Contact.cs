@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using Contacts_Management_DataLayer;
 
 namespace Contacts_Management_BusinessLayer
@@ -67,6 +68,11 @@ namespace Contacts_Management_BusinessLayer
             }
 
             return null;
+        }
+
+        static public DataTable GetAllContactsFromDataBase()
+        {
+            return clsContactData.GetAllContactsFromDataBase();
         }
 
         static void Main(string[] args)
