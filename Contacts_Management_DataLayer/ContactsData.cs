@@ -95,6 +95,38 @@ namespace Contacts_Management_DataLayer
             return dt;
         }
 
+        public static bool IsContactExist(int ID) {
+
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT Found = 1 FROM Contacts Where ContactID = @ID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ID", ID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = reader.HasRows;
+                
+                reader.Close();
+
+            }
+            catch
+            {
+
+            }
+            finally {
+                connection.Close();
+            }
+
+            return isFound;
+        }
 
         static void Main(string[] args)
         {
