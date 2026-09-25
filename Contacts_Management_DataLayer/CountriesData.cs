@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Contacts_Management_DataLayer
 {
-    internal class CountriesData
+    public class clsCountriesData
     {
+
+
     }
 }
