@@ -28,14 +28,25 @@ namespace Contacts_Test_Presentation
             Console.WriteLine("Country ID: " + contact.CountryID);
             Console.WriteLine("Image Path: " + contact.ImagePath);
         }
-        
 
+        static void testGetAllContactsFromDataBase() 
+        {
+            DataTable dataAllContacts = clsContact.GetAllContactsFromDataBase();
+
+            Console.WriteLine("Contacts info: \n");
+
+            foreach (DataRow Row in dataAllContacts.Rows) {
+                Console.WriteLine($"[{Row["ContactID"]}] - {Row["FirstName"]} {Row["LastName"]}");
+            }
+            
+        }
 
         static void Main(string[] args)
         {
-            int contactID = 1;
+            //int contactID = 1;
+            //testFindContactByID(contactID);
 
-            testFindContactByID(contactID);
+            testGetAllContactsFromDataBase();
         }
     }
 }
