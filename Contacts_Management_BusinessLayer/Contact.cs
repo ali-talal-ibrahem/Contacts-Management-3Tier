@@ -75,6 +75,10 @@ namespace Contacts_Management_BusinessLayer
             return clsContactData.GetAllContactsFromDataBase();
         }
 
+        static public bool IsContactExist(int ID) {
+            return clsContactData.IsContactExist(ID);
+        }
+
         static void Main(string[] args)
         {
 
