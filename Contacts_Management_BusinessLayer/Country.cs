@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Contacts_Management_BusinessLayer
 {
-    internal class Country
+    public class clsCountry
     {
 
 

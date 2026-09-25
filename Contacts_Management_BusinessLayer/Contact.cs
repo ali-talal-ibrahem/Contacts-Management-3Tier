@@ -1,15 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Contacts_Management_DataLayer;
 
 namespace Contacts_Management_BusinessLayer
 {
-    internal class Contact
+    public class clsContact
     {
+
+        private enum enMode { AddNew = 0, Update = 1 }
+        private enMode Mode = enMode.AddNew;
+
+        public int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public int CountryID { get; set; }
+        public string ImagePath { get; set; }
+
+        public clsContact()
+        {
+            Mode = enMode.AddNew;
+            ID = -1;
+            FirstName = "";
+            LastName = "";
+            Email = "";
+            Phone = "";
+            Address = "";
+            DateOfBirth = DateTime.Now;
+            CountryID = -1;
+            ImagePath = "";
+        }
+
+        private clsContact(int id, string firstName, string lastName,string email ,string phone,
+            string address, DateTime dateOfBirth, int countryID, string imagePath)
+        {
+            Mode = enMode.Update;
+            ID = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Phone = phone;
+            Address = address;
+            DateOfBirth = dateOfBirth;
+            CountryID = countryID;
+            ImagePath = imagePath;
+        }
+
+        static public clsContact Find(int ID)
+        {
+            string firstName = "";
+            string lastName = "";
+            string email = "";
+            string phone = "";
+            string address = "";
+            DateTime dateOfBirth = DateTime.Now;
+            int countryID = -1;
+            string imagePath = "";
+
+            if (clsContactData.GetContactinfoById(ID, ref firstName, ref lastName
+                ,ref email,ref phone, ref address, ref dateOfBirth, ref countryID, ref imagePath))
+            {
+                return new clsContact(ID, firstName, lastName,email, phone, address,
+                    dateOfBirth, countryID, imagePath);
+            }
+
+            return null;
+        }
+
         static void Main(string[] args)
         {
+
+
         }
     }
 }
