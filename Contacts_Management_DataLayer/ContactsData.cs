@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Net;
 
@@ -61,6 +62,39 @@ namespace Contacts_Management_DataLayer
             }
             return isFound;
         }
+
+        public static DataTable GetAllContactsFromDataBase() {
+
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM Contacts";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows) {
+                    dt.Load(reader);
+                    return dt;
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                return null;
+            }
+            finally {
+                connection.Close();
+            }
+            return dt;
+        }
+
 
         static void Main(string[] args)
         {
