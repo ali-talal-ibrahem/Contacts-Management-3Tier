@@ -41,12 +41,39 @@ namespace Contacts_Test_Presentation
             
         }
 
+        static void testIsContactExist(int ID)
+        {
+            if (!clsContact.IsContactExist(ID))
+            {
+                Console.WriteLine($"The contact with ID [{ID}] does not exist in the system!");
+                return;
+            }
+
+            clsContact ContactFound = clsContact.Find(ID);
+
+            Console.WriteLine($"The contact with ID [{ID}] exists in the system, and here is their information:\n");
+
+            Console.WriteLine("Full Name: " + ContactFound.FirstName +" "+ ContactFound.LastName);
+            Console.WriteLine("Email: " + ContactFound.Email);
+            Console.WriteLine("Phone: " + ContactFound.Phone);
+            Console.WriteLine("Address: " + ContactFound.Address);
+            Console.WriteLine("Date Of Birth: " + ContactFound.DateOfBirth);
+            Console.WriteLine("Country ID: " + ContactFound.CountryID);
+            Console.WriteLine("Image Path: " + ContactFound.ImagePath);
+
+        }
+
+
         static void Main(string[] args)
         {
+            //Contacts Test :
+
             //int contactID = 1;
             //testFindContactByID(contactID);
+            //testGetAllContactsFromDataBase();
+            //testIsContactExist(6);
 
-            testGetAllContactsFromDataBase();
+
         }
     }
 }
