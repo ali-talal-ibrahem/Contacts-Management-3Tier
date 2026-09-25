@@ -78,16 +78,16 @@ namespace Contacts_Management_DataLayer
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.HasRows) {
+                if (reader.HasRows)
+                {
                     dt.Load(reader);
-                    return dt;
                 }
 
                 reader.Close();
             }
             catch
             {
-                return null;
+            
             }
             finally {
                 connection.Close();
