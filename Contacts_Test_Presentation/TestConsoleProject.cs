@@ -83,6 +83,37 @@ namespace Contacts_Test_Presentation
             }
         }
 
+        static void testAddNewContact() {
+
+            clsContact NewContact = new clsContact();
+
+            NewContact.FirstName = "FirstName";
+            NewContact.LastName = "LastName";
+            NewContact.Email = "Email@example.com";
+            NewContact.Phone = "+000000000";
+            NewContact.DateOfBirth = DateTime.Now;
+            NewContact.CountryID = 1;
+            NewContact.Address = "Any Think";
+            NewContact.ImagePath = "";
+
+            if (NewContact.Save())
+            {
+                Console.WriteLine("\nThe new contact has been successfully saved to the database, and here is the stored information:\n");
+                Console.WriteLine($"ID: {NewContact.ID}");
+                Console.WriteLine($"Name: {NewContact.FirstName} {NewContact.LastName}");
+                Console.WriteLine($"Email: {NewContact.Email}");
+                Console.WriteLine($"Phone: {NewContact.Phone}");
+                Console.WriteLine($"DateOfBirth: {NewContact.DateOfBirth}");
+                Console.WriteLine($"CountryID: {NewContact.CountryID}");
+                Console.WriteLine($"Address: {NewContact.Address}");
+                Console.WriteLine($"ImagePath: {NewContact.ImagePath}");
+            }
+            else {
+                Console.WriteLine("\nAn error occurred while saving the new contact to the database... Please try again later.\n");
+            }
+        
+        }
+
         static void Main(string[] args)
         {
             //Contacts Test :
@@ -92,6 +123,7 @@ namespace Contacts_Test_Presentation
             testGetAllContacts();
             //testIsContactExist(6);
             //testDeleteContactByID(8);
+            //testAddNewContact();
 
         }
     }
