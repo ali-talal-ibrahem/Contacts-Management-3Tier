@@ -172,9 +172,9 @@ namespace Contacts_Test_Presentation
 
             Console.WriteLine("Countries info:\n");
 
-            Console.WriteLine($"{"CountryID"} | {"CountryName",-15} | {"Code",-4} | {"PhoneCode"}");
+            Console.WriteLine($"{"CountryID"} | {"CountryName",-35} | {"Code",-4} | {"PhoneCode"}");
             foreach (DataRow Row in dtAllCountries.Rows) {
-                Console.WriteLine($" {Row["CountryID"],-8} | {Row["CountryName"],-15} | {Row["Code"],-4} | {Row["PhoneCode"]}");
+                Console.WriteLine($" {Row["CountryID"],-8} | {Row["CountryName"],-35} | {Row["Code"],-4} | {Row["PhoneCode"]}");
             }
 
             Console.WriteLine("\nNumber Countires in System : {0}",dtAllCountries.Rows.Count);
