@@ -13,7 +13,7 @@ namespace Contacts_Management_DataLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT FirstName, LastName, Email, Phone, Address, DateOfBirth, CountryID, ImagePath FROM Contacts WHERE ContactID = @ID";
+            string query = @"SELECT FirstName, LastName, Email, Phone, Address, DateOfBirth, CountryID, ImagePath FROM Contacts WHERE ContactID = @ID";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ID", ID);
@@ -63,7 +63,7 @@ namespace Contacts_Management_DataLayer
             return isFound;
         }
 
-        public static DataTable GetAllContactsFromDataBase() {
+        public static DataTable GetAllContactsFrom() {
 
             DataTable dt = new DataTable();
 
@@ -101,7 +101,7 @@ namespace Contacts_Management_DataLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT Found = 1 FROM Contacts Where ContactID = @ID";
+            string query = @"SELECT Found = 1 FROM Contacts Where ContactID = @ID";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ID", ID);
@@ -126,6 +126,37 @@ namespace Contacts_Management_DataLayer
             }
 
             return isFound;
+        }
+
+        public static bool DeleteContactByID(int ID) {
+
+            int rowEffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = $"Delete From Contacts Where ContactID = {ID}";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+
+                connection.Open();
+                rowEffected = command.ExecuteNonQuery();
+
+
+            }
+            catch
+            {
+
+            }
+            finally {
+                connection.Close();
+            }
+
+
+
+
+            return (rowEffected > 0);
         }
 
         static void Main(string[] args)

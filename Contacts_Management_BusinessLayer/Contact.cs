@@ -70,13 +70,17 @@ namespace Contacts_Management_BusinessLayer
             return null;
         }
 
-        static public DataTable GetAllContactsFromDataBase()
+        static public DataTable GetAllContactsFrom()
         {
-            return clsContactData.GetAllContactsFromDataBase();
+            return clsContactData.GetAllContactsFrom();
         }
 
         static public bool IsContactExist(int ID) {
             return clsContactData.IsContactExist(ID);
+        }
+
+        static public bool DeleteContactByID(int ID) {
+            return clsContactData.DeleteContactByID(ID);
         }
 
         static void Main(string[] args)
