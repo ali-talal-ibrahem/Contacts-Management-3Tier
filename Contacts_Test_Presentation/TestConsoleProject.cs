@@ -29,14 +29,16 @@ namespace Contacts_Test_Presentation
             Console.WriteLine("Image Path: " + contact.ImagePath);
         }
 
-        static void testGetAllContactsFromDataBase() 
+        static void testGetAllContacts() 
         {
-            DataTable dataAllContacts = clsContact.GetAllContactsFromDataBase();
+            DataTable dataAllContacts = clsContact.GetAllContactsFrom();
 
-            Console.WriteLine("Contacts info: \n");
+            Console.WriteLine("Contacts (ID , FullName , Phone , Email)info: \n");
+            string FullName = "";
 
             foreach (DataRow Row in dataAllContacts.Rows) {
-                Console.WriteLine($"[{Row["ContactID"]}] - {Row["FirstName"]} {Row["LastName"]}");
+                FullName = $"{Row["FirstName"]} {Row["LastName"]}";
+                Console.WriteLine($" {Row["ContactID"],-3} - NAME : {FullName,-20} | PHONE : {Row["Phone"],-15} | Email : {Row["Email"],-15}");
             }
             
         }
@@ -63,6 +65,23 @@ namespace Contacts_Test_Presentation
 
         }
 
+        static void testDeleteContactByID(int ID) {
+
+            if (clsContact.IsContactExist(ID))
+            {
+                if (clsContact.DeleteContactByID(ID))
+                {
+                    Console.WriteLine($"\aThe contact with the ID [{ID}] has been deleted.");
+                }
+                else
+                {
+                    Console.WriteLine("\aAn error occurred while deleting the following contact. Please try again.");
+                }
+            }
+            else {
+                Console.WriteLine($"\aWe do not have a contact associated with that ID [{ID}] in our system.");
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -70,9 +89,9 @@ namespace Contacts_Test_Presentation
 
             //int contactID = 1;
             //testFindContactByID(contactID);
-            //testGetAllContactsFromDataBase();
+            testGetAllContacts();
             //testIsContactExist(6);
-
+            //testDeleteContactByID(8);
 
         }
     }
