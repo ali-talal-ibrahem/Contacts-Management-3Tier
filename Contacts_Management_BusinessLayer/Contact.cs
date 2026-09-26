@@ -34,6 +34,11 @@ namespace Contacts_Management_BusinessLayer
             ImagePath = "";
         }
 
+        private bool _AddNewContact() {
+            this.ID = clsContactData.AddNewContact(this.FirstName, this.LastName, this.Email, this.Phone, this.Address, this.DateOfBirth, this.CountryID, this.ImagePath);
+            return (this.ID != -1);
+        }
+
         private clsContact(int id, string firstName, string lastName,string email ,string phone,
             string address, DateTime dateOfBirth, int countryID, string imagePath)
         {
@@ -82,6 +87,26 @@ namespace Contacts_Management_BusinessLayer
         static public bool DeleteContactByID(int ID) {
             return clsContactData.DeleteContactByID(ID);
         }
+
+        public bool Save() {
+
+            switch (Mode) {
+                case enMode.AddNew:
+                    if (_AddNewContact())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                case enMode.Update:
+                    return true;
+            }
+
+            return false;
+        }
+
 
         static void Main(string[] args)
         {

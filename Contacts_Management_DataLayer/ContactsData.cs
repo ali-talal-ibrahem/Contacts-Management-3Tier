@@ -159,6 +159,57 @@ namespace Contacts_Management_DataLayer
             return (rowEffected > 0);
         }
 
+        public static int AddNewContact(string FirstName, string LastName, string Email, string Phone, string Address, DateTime DateOfBirth, int CountryID, string ImagePath ) 
+        {
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"INSERT INTO Contacts (FirstName,LastName,Phone,Email,Address,DateOfBirth,CountryID,ImagePath)
+                            VALUES (@FirstName,@LastName,@Phone,@Email,@Address,@DateOfBirth,@CountryID,@ImagePath)
+                             SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@FirstName", FirstName);
+            command.Parameters.AddWithValue("@LastName", LastName);
+            command.Parameters.AddWithValue("@Phone", Phone);
+            command.Parameters.AddWithValue("@Email", Email);
+            command.Parameters.AddWithValue("@Address", Address);
+            command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
+            command.Parameters.AddWithValue("@CountryID", CountryID);
+            if (!string.IsNullOrEmpty(ImagePath))
+            {
+                command.Parameters.AddWithValue("@ImagePath", ImagePath);
+            }
+            else {
+                command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+            }
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertID))
+                {
+                    return insertID;
+                }
+                else {
+                    return -1;
+                }
+
+            }
+            catch
+            {
+
+            }
+            finally {
+                connection.Close();
+            }
+
+            return -1;
+        }
+        
         static void Main(string[] args)
         {
 
