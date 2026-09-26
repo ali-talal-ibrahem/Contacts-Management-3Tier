@@ -114,16 +114,37 @@ namespace Contacts_Test_Presentation
         
         }
 
+        static void testUpdateContactByID(int ID) 
+        {
+
+            clsContact Contact = clsContact.Find(ID);
+
+            if (Contact != null)
+            {
+                Console.WriteLine($"\aContact ID {ID} Is Found !\n");
+            }
+            else {
+                Console.WriteLine($"\aContact ID {ID} Is Not Found !\n");
+            }
+
+
+        }
+
         static void Main(string[] args)
         {
             //Contacts Test :
 
             //int contactID = 1;
             //testFindContactByID(contactID);
-            testGetAllContacts();
+            //testGetAllContacts();
             //testIsContactExist(6);
             //testDeleteContactByID(8);
             //testAddNewContact();
+
+
+            // Test Function its Worked :
+            testUpdateContactByID(1);
+            testUpdateContactByID(500);
 
         }
     }
