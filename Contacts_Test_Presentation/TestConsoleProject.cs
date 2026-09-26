@@ -96,6 +96,8 @@ namespace Contacts_Test_Presentation
         //Ar: دالة لإضافة جهة اتصال جديدة في قاعدة البيانات
         static void testAddNewContact() {
 
+            // Edit the information yourself - قم بتعديل المعلومات بنفسك
+
             clsContact NewContact = new clsContact();
 
             NewContact.FirstName = "FirstName";
@@ -124,9 +126,12 @@ namespace Contacts_Test_Presentation
             }
         
         }
-
+        
+        //En: A function to update an existing contact in the database using its ID. 
+        //Ar: دالة لتحديث جهة اتصال موجودة في قاعدة البيانات عن طريق المعرف الخاص بها
         static void testUpdateContactByID(int ID) 
         {
+            // Edit the information yourself - قم بتعديل المعلومات بنفسك
 
             clsContact Contact = clsContact.Find(ID);
 
@@ -168,13 +173,10 @@ namespace Contacts_Test_Presentation
             
             //testAddNewContact();
 
+            //testUpdateContactByID(100); // This Return True - هذه تعمل بنجاح
+            //testUpdateContactByID(500); // This Return False هذه لا يجب ان تعمل
+
             //testDeleteContactByID(8);
-
-
-            // Test Function its Worked :
-            //testUpdateContactByID(109);
-            //testUpdateContactByID(500);
-
         }
     }
 }
