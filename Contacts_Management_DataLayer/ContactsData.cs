@@ -209,7 +209,59 @@ namespace Contacts_Management_DataLayer
 
             return -1;
         }
-        
+
+        public static bool UpdateContact(int ID, string FirstName, string LastName, string Email, string Phone, string Address, DateTime DateOfBirth, int CountryID, string ImagePath) {
+
+            int rowEffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"UPDATE Contacts
+                             set FirstName = @FirstName,
+                                 LastName = @LastName,
+                                 Email = @Email,
+                                 Phone = @Phone,
+                                 Address = @Address,
+                                 DateOfBirth = @DateOfBirth,
+                                 CountryID = @CountryID,
+                                 ImagePath = @ImagePath
+                             Where ContactID = @ID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ID", ID);
+            command.Parameters.AddWithValue("@FirstName", FirstName);
+            command.Parameters.AddWithValue("@LastName", LastName);
+            command.Parameters.AddWithValue("@Phone", Phone);
+            command.Parameters.AddWithValue("@Email", Email);
+            command.Parameters.AddWithValue("@Address", Address);
+            command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
+            command.Parameters.AddWithValue("@CountryID", CountryID);
+            if (!string.IsNullOrEmpty(ImagePath))
+            {
+                command.Parameters.AddWithValue("@ImagePath", ImagePath);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+            }
+
+            try
+            {
+                connection.Open();
+                rowEffected = command.ExecuteNonQuery();
+            }
+            catch
+            {
+                return false;
+            }
+            finally {
+                connection.Close();
+            }
+
+
+            return (rowEffected > 0);
+        }
+
         static void Main(string[] args)
         {
 
