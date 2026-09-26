@@ -39,6 +39,10 @@ namespace Contacts_Management_BusinessLayer
             return (this.ID != -1);
         }
 
+        private bool _UpdateContact() {
+            return clsContactData.UpdateContact(this.ID, this.FirstName, this.LastName, this.Email, this.Phone, this.Address, this.DateOfBirth, this.CountryID, this.ImagePath);
+        }
+
         private clsContact(int id, string firstName, string lastName,string email ,string phone,
             string address, DateTime dateOfBirth, int countryID, string imagePath)
         {
@@ -101,7 +105,7 @@ namespace Contacts_Management_BusinessLayer
                         return false;
                     }
                 case enMode.Update:
-                    return true;
+                    return (_UpdateContact());
             }
 
             return false;

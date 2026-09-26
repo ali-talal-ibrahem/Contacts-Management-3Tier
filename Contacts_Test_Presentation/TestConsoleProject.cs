@@ -102,7 +102,7 @@ namespace Contacts_Test_Presentation
             NewContact.LastName = "LastName";
             NewContact.Email = "Email@example.com";
             NewContact.Phone = "+000000000";
-            NewContact.DateOfBirth = DateTime.Now;
+            NewContact.DateOfBirth = new DateTime(2000,01,01,12,00,00);
             NewContact.CountryID = 1;
             NewContact.Address = "Any Think";
             NewContact.ImagePath = "";
@@ -125,6 +125,37 @@ namespace Contacts_Test_Presentation
         
         }
 
+        static void testUpdateContactByID(int ID) 
+        {
+
+            clsContact Contact = clsContact.Find(ID);
+
+            if (Contact != null)
+            {
+                Contact.FirstName = "New-FirstName";
+                Contact.LastName = "New-LastName";
+                Contact.Email = "New-Email@example.com";
+                Contact.Phone = "New-+000000";
+                Contact.DateOfBirth = new DateTime(2001, 02, 02, 01, 00, 00);
+                Contact.CountryID = 1;
+                Contact.Address = "New-Address";
+                Contact.ImagePath = "";
+
+                if (Contact.Save())
+                {
+                    Console.WriteLine($"Contact information for the contact with ID [{ID}] has been successfully updated!");
+                }
+                else {
+                    Console.WriteLine("An error occurred while updating the contact details. Please try again.");
+                }
+            }
+            else {
+                Console.WriteLine($"\aContact ID {ID} Is Not Found !\n");
+            }
+
+
+        }
+
         static void Main(string[] args)
         {
             //NOTE : Contacts Test
@@ -138,6 +169,11 @@ namespace Contacts_Test_Presentation
             //testAddNewContact();
 
             //testDeleteContactByID(8);
+
+
+            // Test Function its Worked :
+            //testUpdateContactByID(109);
+            //testUpdateContactByID(500);
 
         }
     }
