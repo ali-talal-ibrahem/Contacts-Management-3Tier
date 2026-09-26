@@ -38,7 +38,7 @@ namespace Contacts_Test_Presentation
         {
             DataTable dataAllContacts = clsContact.GetAllContactsFrom();
 
-            Console.WriteLine("Contacts (ID , FullName , Phone , Email)info: \n");
+            Console.WriteLine("Contacts (ID , FullName , Phone , Email) info: \n");
             string FullName = "";
 
             foreach (DataRow Row in dataAllContacts.Rows) {
@@ -164,6 +164,22 @@ namespace Contacts_Test_Presentation
 
         //Countries
 
+        //En: A function to return all countries stored in the database.
+        //Ar: دالة لإرجاع جميع البلدان المخزنة في قاعدة البيانات
+        static void testGetAllCountries(){
+
+            DataTable dtAllCountries = clsCountry.GetAllCountries();
+
+            Console.WriteLine("Countries info:\n");
+
+            Console.WriteLine($"{"CountryID"} | {"CountryName",-15} | {"Code",-4} | {"PhoneCode"}");
+            foreach (DataRow Row in dtAllCountries.Rows) {
+                Console.WriteLine($" {Row["CountryID"],-8} | {Row["CountryName"],-15} | {Row["Code"],-4} | {Row["PhoneCode"]}");
+            }
+
+            Console.WriteLine("\nNumber Countires in System : {0}",dtAllCountries.Rows.Count);
+
+        }
 
         //static void testFindCountryByID(int CountryID) { }
 
@@ -192,13 +208,19 @@ namespace Contacts_Test_Presentation
             //testIsContactExist(1);
 
             //testGetAllContacts();
-            
+
             //testAddNewContact();
 
             //testUpdateContactByID(100); // This Return True - هذه تعمل بنجاح
-            //testUpdateContactByID(500); // This Return False هذه لا يجب ان تعمل
+            //testUpdateContactByID(500); // This Return False - هذه لا يجب ان تعمل
 
             //testDeleteContactByID(8);
+
+
+            //NOTE : Countries Test
+
+            testGetAllCountries();
+
         }
     }
 }
