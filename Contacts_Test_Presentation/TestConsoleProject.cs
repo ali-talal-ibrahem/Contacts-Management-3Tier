@@ -161,6 +161,28 @@ namespace Contacts_Test_Presentation
 
         }
 
+
+        //Countries
+
+
+        //static void testFindCountryByID(int CountryID) { }
+
+        //static void testFindCountryByName(string CountryName) { }
+
+        //static void testFindCountryByCode(CountryCode) { }
+
+        //static void testIsCountryExistByID(int ID) { }
+
+        //static void testIsCountryExistByName(string CountryName) { }
+
+        //static void testIsCountryExistByCode(string CountryCode) { }
+
+        //static void testAddCountry() { }
+
+        //static void testUpdateCountryByID(int ID) { }
+
+        //static void testDeleteCountryByID(int ID) { }
+
         static void Main(string[] args)
         {
             //NOTE : Contacts Test
