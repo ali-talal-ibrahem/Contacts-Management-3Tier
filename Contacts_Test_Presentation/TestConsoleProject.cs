@@ -7,7 +7,10 @@ namespace Contacts_Test_Presentation
 {
     internal class TestConsoleProject
     {
+        //Contacts
 
+        //En: A function to search for a contact in the database using its ID and return the object if found.
+        //Ar: دالة للبحث عن جهة اتصال في قاعدة البيانات باستخدام مُعرِّفها، وإرجاع الكائن في حال العثور عليه
         static void testFindContactByID(int ID)
         { 
             clsContact contact = clsContact.Find(ID);
@@ -29,6 +32,8 @@ namespace Contacts_Test_Presentation
             Console.WriteLine("Image Path: " + contact.ImagePath);
         }
 
+        //En: A function to return all contacts stored in the database.
+        //Ar: دالة لإرجاع جميع جهات الاتصال المخزنة في قاعدة البيانات
         static void testGetAllContacts() 
         {
             DataTable dataAllContacts = clsContact.GetAllContactsFrom();
@@ -43,6 +48,8 @@ namespace Contacts_Test_Presentation
             
         }
 
+        //En: A function to check whether the contact exists in the database.
+        //Ar: دالة للتحقق مما إذا كانت جهة الاتصال موجودة في قاعدة البيانات
         static void testIsContactExist(int ID)
         {
             if (!clsContact.IsContactExist(ID))
@@ -65,6 +72,8 @@ namespace Contacts_Test_Presentation
 
         }
 
+        //En: A function to delete a contact by its ID.
+        //Ar: دالة لحذف جهة اتصال باستخدام مُعرِّفها.
         static void testDeleteContactByID(int ID) {
 
             if (clsContact.IsContactExist(ID))
@@ -83,6 +92,8 @@ namespace Contacts_Test_Presentation
             }
         }
 
+        //En: A function to add a new contact to the database.
+        //Ar: دالة لإضافة جهة اتصال جديدة في قاعدة البيانات
         static void testAddNewContact() {
 
             clsContact NewContact = new clsContact();
@@ -116,14 +127,17 @@ namespace Contacts_Test_Presentation
 
         static void Main(string[] args)
         {
-            //Contacts Test :
+            //NOTE : Contacts Test
 
             //int contactID = 1;
             //testFindContactByID(contactID);
-            testGetAllContacts();
-            //testIsContactExist(6);
-            //testDeleteContactByID(8);
+            //testIsContactExist(1);
+
+            //testGetAllContacts();
+            
             //testAddNewContact();
+
+            //testDeleteContactByID(8);
 
         }
     }
