@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using Contacts_Management_DataLayer;
 
 namespace Contacts_Management_BusinessLayer
@@ -33,6 +34,11 @@ namespace Contacts_Management_BusinessLayer
             Mode = enMode.eUpdateMode;
 
         }
+
+        public static DataTable GetAllCountries() {
+            return clsCountriesData.GetAllCountries();
+        }
+
 
     }
 }
