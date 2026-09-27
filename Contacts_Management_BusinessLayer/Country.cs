@@ -55,10 +55,22 @@ namespace Contacts_Management_BusinessLayer
             
         }
 
-        //public static clsCountry Find(string CountryName) { }
-    
-        //public static clsCountry Find(string Code) { }
-        
+        public static clsCountry Find(string CountryName) 
+        {
+            int ID = -1;
+            string Code = "";
+            string PhoneCode = "";
+
+            if (clsCountriesData.FindCountryByName(CountryName,ref ID,ref PhoneCode,ref Code))
+                {
+                return new clsCountry(ID, CountryName, PhoneCode, Code);
+                }
+            else{
+            return null;
+            }
+        }
+
+
 
     }
 }
