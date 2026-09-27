@@ -187,16 +187,29 @@ namespace Contacts_Test_Presentation
 
             if (Country != null)
             {
-                Console.WriteLine($"Country ID [{CountryID}] Is Found .. Country Info:\n");
-                Console.WriteLine($"Country ID: {CountryID} | Country Name = {Country.CountryName} | Country Code : {Country.CountryCode} | Phone Code : {Country.PhoneCode}");
+                Console.WriteLine($"\nCountry ID [{CountryID}] Is Found .. Country Info:");
+                Console.WriteLine($"Country ID: {CountryID} | Country Name = {Country.CountryName} | Country Code : {Country.CountryCode} | Phone Code : {Country.PhoneCode}\n");
             }
             else 
             {
-                Console.WriteLine($"The country you are looking for with this ID[{CountryID}] does not exist in our system.");
+                Console.WriteLine($"The country you are looking for with this ID[{CountryID}] does not exist in our system.\n");
             }
         }
 
-        //static void testFindCountryByName(string CountryName) { }
+        static void testFindCountryByName(string CountryName)
+        {
+            clsCountry Country = clsCountry.Find(CountryName);
+
+            if (Country != null)
+            {
+                Console.WriteLine($"\nCountry Name \"[{CountryName}]\" Is Found .. Country Info:");
+                Console.WriteLine($"Country ID: {Country.ID} | Country Name = {Country.CountryName} | Country Code : {Country.CountryCode} | Phone Code : {Country.PhoneCode}\n");
+            }
+            else
+            {
+                Console.WriteLine($"The country you are looking for with this Country Name \"[{CountryName}]\" does not exist in our system.\n");
+            }
+        }
 
         //static void testFindCountryByCode(CountryCode) { }
 
@@ -229,12 +242,16 @@ namespace Contacts_Test_Presentation
 
             //testDeleteContactByID(8);
 
+            //---------------------------------------------------------------------
 
             //NOTE : Countries Test
 
             //testGetAllCountries();
 
             //testFindCountryByID(1);
+            //testFindCountryByName("syria");  // This Return True - هذه تعمل بنجاح
+            //testFindCountryByName("Hahah");  // This Return False - هذه لا يجب ان تعمل
+
 
         }
     }
