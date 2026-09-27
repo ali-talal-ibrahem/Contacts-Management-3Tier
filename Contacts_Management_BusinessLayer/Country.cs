@@ -70,6 +70,20 @@ namespace Contacts_Management_BusinessLayer
             }
         }
 
+        public static bool IsCountryExistByID(int ID) {
+            return clsCountriesData.IsCountryExistByID(ID);
+        }
+
+        public static bool IsCountryExistByName(string CountryName) 
+        {
+            return clsCountriesData.IsCountryExistByName(CountryName);
+        }
+
+        public static bool IsCountryExistByCode(string CountryCode) 
+        {
+            return clsCountriesData.IsCountryExistByCode(CountryCode);
+        }
+
 
 
     }
