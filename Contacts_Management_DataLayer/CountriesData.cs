@@ -103,9 +103,71 @@ namespace Contacts_Management_DataLayer
             
         }
 
-        //public static bool FindCountryByName(string CountryName , ref int ID , ref string PhoneCode , ref string Code) { }
+        public static bool FindCountryByName(string CountryName , ref int ID , ref string PhoneCode , ref string Code) 
+        {
 
-        //public static bool FindCountryByCode(string Code, ref int ID , ref string PhoneCode , ref string CountryName) { }
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT CountryID , Code , PhoneCode From Countries Where CountryName = @CountryName";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@CountryName", CountryName);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    ID = (int)reader["CountryID"];
+
+                    if (reader["Code"] != DBNull.Value)
+                    {
+                        Code = (string)reader["Code"];
+                    }
+                    else
+                    {
+                        Code = "";
+                    }
+
+                    if (reader["PhoneCode"] != DBNull.Value)
+                    {
+                        PhoneCode = (string)reader["PhoneCode"];
+                    }
+                    else
+                    {
+                        PhoneCode = "";
+                    }
+                }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return isFound;
+
+        }
+
 
     }
 }
