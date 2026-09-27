@@ -13,7 +13,7 @@
     static class clsDataAccessSettings_ForYou
     //           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     {
-        static public string ConnectionString = "Server=.;Database=ContactsDB;User Id=[YOUR_SERVER_NAME];Password=[YOUR_PASSWORD]";
+        static public string ConnectionString = "Server=.;Database=ContactsDB1;User Id=[YOUR_SERVER_NAME];Password=[YOUR_PASSWORD]";
         //                                                                            ^^^^^^^^^^^^^^^^^^          ^^^^^^^^^^^^^^^
     }
 }
