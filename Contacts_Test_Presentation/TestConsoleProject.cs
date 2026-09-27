@@ -43,7 +43,7 @@ namespace Contacts_Test_Presentation
 
             foreach (DataRow Row in dataAllContacts.Rows) {
                 FullName = $"{Row["FirstName"]} {Row["LastName"]}";
-                Console.WriteLine($" {Row["ContactID"],-3} - NAME : {FullName,-20} | PHONE : {Row["Phone"],-15} | Email : {Row["Email"],-15}");
+                Console.WriteLine($" {Row["ContactID"],-3} - NAME : {FullName,-22} | PHONE : {Row["Phone"],-17} | Email : {Row["Email"],-15}");
             }
             
         }
@@ -181,7 +181,20 @@ namespace Contacts_Test_Presentation
 
         }
 
-        //static void testFindCountryByID(int CountryID) { }
+        static void testFindCountryByID(int CountryID) {
+
+            clsCountry Country = clsCountry.Find(CountryID);
+
+            if (Country != null)
+            {
+                Console.WriteLine($"Country ID [{CountryID}] Is Found .. Country Info:\n");
+                Console.WriteLine($"Country ID: {CountryID} | Country Name = {Country.CountryName} | Country Code : {Country.CountryCode} | Phone Code : {Country.PhoneCode}");
+            }
+            else 
+            {
+                Console.WriteLine($"The country you are looking for with this ID[{CountryID}] does not exist in our system.");
+            }
+        }
 
         //static void testFindCountryByName(string CountryName) { }
 
@@ -219,7 +232,9 @@ namespace Contacts_Test_Presentation
 
             //NOTE : Countries Test
 
-            testGetAllCountries();
+            //testGetAllCountries();
+
+            //testFindCountryByID(1);
 
         }
     }
