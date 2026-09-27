@@ -181,6 +181,8 @@ namespace Contacts_Test_Presentation
 
         }
 
+        //En: A function to search for a Country in the database using its ID and return the object if found.
+        //Ar: دالة للبحث عن دولة في قاعدة البيانات باستخدام مُعرِّفها، وإرجاع الكائن في حال العثور عليه
         static void testFindCountryByID(int CountryID) {
 
             clsCountry Country = clsCountry.Find(CountryID);
@@ -196,6 +198,8 @@ namespace Contacts_Test_Presentation
             }
         }
 
+        //En: A function to search for a Country in the database using its Name and return the object if found.
+        //Ar: دالة للبحث عن دولة في قاعدة البيانات باستخدام اسمها، وإرجاع الكائن في حال العثور عليه
         static void testFindCountryByName(string CountryName)
         {
             clsCountry Country = clsCountry.Find(CountryName);
@@ -211,6 +215,8 @@ namespace Contacts_Test_Presentation
             }
         }
 
+        //En: A function to check whether the contact exists in the database use ID.
+        //Ar: دالة للتحقق مما إذا كانت الدولة موجودة في قاعدة البيانات باستخدام المعرف
         static void testIsCountryExistByID(int ID) 
         {
             if (clsCountry.IsCountryExistByID(ID))
@@ -222,6 +228,8 @@ namespace Contacts_Test_Presentation
             }
         }
 
+        //En: A function to check whether the contact exists in the database use Name.
+        //Ar: دالة للتحقق مما إذا كانت الدولة موجودة في قاعدة البيانات باستخدام الاسم
         static void testIsCountryExistByName(string CountryName) 
         {
             if (clsCountry.IsCountryExistByName(CountryName))
@@ -234,6 +242,8 @@ namespace Contacts_Test_Presentation
             }
         }
 
+        //En: A function to check whether the contact exists in the database use Code.
+        //Ar: دالة للتحقق مما إذا كانت الدولة موجودة في قاعدة البيانات باستخدام الكود
         static void testIsCountryExistByCode(string CountryCode)
         {
             if (clsCountry.IsCountryExistByCode(CountryCode))
@@ -245,8 +255,6 @@ namespace Contacts_Test_Presentation
                 Console.WriteLine($"The country you are looking for with the Code ({CountryCode}) does not exist in our system.\a\n");
             }
         }
-
-        //static void testUpdateCountryByID(int ID) { }
 
         static void Main(string[] args)
         {
