@@ -272,7 +272,5 @@ namespace Contacts_Management_DataLayer
             return isFound;
         }
 
-
-
     }
 }
