@@ -246,11 +246,7 @@ namespace Contacts_Test_Presentation
             }
         }
 
-        //static void testAddCountry() { }
-
         //static void testUpdateCountryByID(int ID) { }
-
-        //static void testDeleteCountryByID(int ID) { }
 
         static void Main(string[] args)
         {
