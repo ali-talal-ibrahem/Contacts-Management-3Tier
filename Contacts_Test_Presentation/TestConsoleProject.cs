@@ -211,13 +211,40 @@ namespace Contacts_Test_Presentation
             }
         }
 
-        //static void testFindCountryByCode(CountryCode) { }
+        static void testIsCountryExistByID(int ID) 
+        {
+            if (clsCountry.IsCountryExistByID(ID))
+            {
+                Console.WriteLine($"The country you are looking for with the ID ({ID}), exists in our system :)\n");
+            }
+            else {
+                Console.WriteLine($"The country you are looking for with the ID ({ID}) does not exist in our system.\a\n");
+            }
+        }
 
-        //static void testIsCountryExistByID(int ID) { }
+        static void testIsCountryExistByName(string CountryName) 
+        {
+            if (clsCountry.IsCountryExistByName(CountryName))
+            {
+                Console.WriteLine($"The country you are looking for with the Name ({CountryName}), exists in our system :)\n");
+            }
+            else
+            {
+                Console.WriteLine($"The country you are looking for with the Name ({CountryName}) does not exist in our system.\a\n");
+            }
+        }
 
-        //static void testIsCountryExistByName(string CountryName) { }
-
-        //static void testIsCountryExistByCode(string CountryCode) { }
+        static void testIsCountryExistByCode(string CountryCode)
+        {
+            if (clsCountry.IsCountryExistByCode(CountryCode))
+            {
+                Console.WriteLine($"The country you are looking for with the Code ({CountryCode}), exists in our system :)\n");
+            }
+            else
+            {
+                Console.WriteLine($"The country you are looking for with the Code ({CountryCode}) does not exist in our system.\a\n");
+            }
+        }
 
         //static void testAddCountry() { }
 
@@ -252,6 +279,13 @@ namespace Contacts_Test_Presentation
             //testFindCountryByName("syria");  // This Return True - هذه تعمل بنجاح
             //testFindCountryByName("Hahah");  // This Return False - هذه لا يجب ان تعمل
 
+            //testIsCountryExistByID(1);         // This Return True - هذه تعمل بنجاح
+            //testIsCountryExistByName("Syria"); // This Return True - هذه تعمل بنجاح
+            //testIsCountryExistByCode("SY");    // This Return True - هذه تعمل بنجاح
+
+            //testIsCountryExistByID(500);       // This Return False - هذه لا يجب ان تعمل
+            //testIsCountryExistByName("None");  // This Return False - هذه لا يجب ان تعمل
+            //testIsCountryExistByCode("DSWR");  // This Return False - هذه لا يجب ان تعمل
 
         }
     }
