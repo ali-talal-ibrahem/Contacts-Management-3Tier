@@ -12,15 +12,21 @@ namespace WindowsFormContacts_Management_Presentation
         }
 
         private void _RefreshContactList() {
+
             dgvAllContacts.DataSource = clsContact.GetAllContactsFrom();
             int CountAllContacts = dgvAllContacts.RowCount;
-            lbl_CountContacts.Text = CountAllContacts.ToString();
+            lbl_Count.Text = CountAllContacts.ToString();
 
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             _RefreshContactList();
+        }
+
+        private void btn_AddNewContact_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add", "Successfuly");
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,5 +38,33 @@ namespace WindowsFormContacts_Management_Presentation
         {
             MessageBox.Show("Delete", "Successfuly");
         }
+
+        private void btn_ShowCountriesTable_Click(object sender, EventArgs e)
+        {
+            btn_ShowContactsTable.Visible = true;
+            btn_ShowCountriesTable.Visible = false;
+
+            dgvAllContacts.DataSource = null;
+            dgvAllContacts.DataSource = clsCountry.GetAllCountries();
+
+            int CountAllCountries = dgvAllContacts.RowCount;
+            lbl_Count.Text = CountAllCountries.ToString();
+            lbl_Title3.Text = "Number Countries: ";
+        }
+
+        private void btn_ShowContactsTable_Click(object sender, EventArgs e)
+        {
+            btn_ShowCountriesTable.Visible = true;
+            btn_ShowContactsTable.Visible = false;
+
+            dgvAllContacts.DataSource = null;
+            dgvAllContacts.DataSource = clsContact.GetAllContactsFrom();
+
+            int CountAllContacts = dgvAllContacts.RowCount;
+            lbl_Count.Text = CountAllContacts.ToString();
+            lbl_Title3.Text = "Number Contacts: ";
+        }
+
+
     }
 }

@@ -38,11 +38,14 @@ namespace WindowsFormContacts_Management_Presentation
             this.lbl_Title = new System.Windows.Forms.Label();
             this.lbl_Title2 = new System.Windows.Forms.Label();
             this.lbl_Title3 = new System.Windows.Forms.Label();
-            this.lbl_CountContacts = new System.Windows.Forms.Label();
+            this.lbl_Count = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_ShowCountriesTable = new System.Windows.Forms.Button();
+            this.btn_ShowContactsTable = new System.Windows.Forms.Button();
+            this.btn_AddNewContact = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllContacts)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -106,17 +109,17 @@ namespace WindowsFormContacts_Management_Presentation
             this.lbl_Title3.TabIndex = 3;
             this.lbl_Title3.Text = "Number Contacts : ";
             // 
-            // lbl_CountContacts
+            // lbl_Count
             // 
-            this.lbl_CountContacts.AutoSize = true;
-            this.lbl_CountContacts.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_CountContacts.Font = new System.Drawing.Font("Anton", 10F);
-            this.lbl_CountContacts.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lbl_CountContacts.Location = new System.Drawing.Point(149, 78);
-            this.lbl_CountContacts.Name = "lbl_CountContacts";
-            this.lbl_CountContacts.Size = new System.Drawing.Size(31, 21);
-            this.lbl_CountContacts.TabIndex = 4;
-            this.lbl_CountContacts.Text = "000";
+            this.lbl_Count.AutoSize = true;
+            this.lbl_Count.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Count.Font = new System.Drawing.Font("Anton", 10F);
+            this.lbl_Count.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lbl_Count.Location = new System.Drawing.Point(158, 78);
+            this.lbl_Count.Name = "lbl_Count";
+            this.lbl_Count.Size = new System.Drawing.Size(31, 21);
+            this.lbl_Count.TabIndex = 4;
+            this.lbl_Count.Text = "000";
             // 
             // contextMenuStrip1
             // 
@@ -148,13 +151,64 @@ namespace WindowsFormContacts_Management_Presentation
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
+            // btn_ShowCountriesTable
+            // 
+            this.btn_ShowCountriesTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(68)))));
+            this.btn_ShowCountriesTable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ShowCountriesTable.FlatAppearance.BorderSize = 0;
+            this.btn_ShowCountriesTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ShowCountriesTable.Font = new System.Drawing.Font("Bahnschrift SemiLight SemiConde", 10F);
+            this.btn_ShowCountriesTable.Location = new System.Drawing.Point(964, 78);
+            this.btn_ShowCountriesTable.Name = "btn_ShowCountriesTable";
+            this.btn_ShowCountriesTable.Size = new System.Drawing.Size(105, 26);
+            this.btn_ShowCountriesTable.TabIndex = 7;
+            this.btn_ShowCountriesTable.Text = "Countacts Table";
+            this.btn_ShowCountriesTable.UseVisualStyleBackColor = false;
+            this.btn_ShowCountriesTable.Click += new System.EventHandler(this.btn_ShowCountriesTable_Click);
+            // 
+            // btn_ShowContactsTable
+            // 
+            this.btn_ShowContactsTable.BackColor = System.Drawing.Color.Chocolate;
+            this.btn_ShowContactsTable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ShowContactsTable.FlatAppearance.BorderSize = 0;
+            this.btn_ShowContactsTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ShowContactsTable.Font = new System.Drawing.Font("Bahnschrift SemiLight SemiConde", 10F);
+            this.btn_ShowContactsTable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btn_ShowContactsTable.Location = new System.Drawing.Point(964, 78);
+            this.btn_ShowContactsTable.Name = "btn_ShowContactsTable";
+            this.btn_ShowContactsTable.Size = new System.Drawing.Size(105, 26);
+            this.btn_ShowContactsTable.TabIndex = 8;
+            this.btn_ShowContactsTable.Text = "Countries Table";
+            this.btn_ShowContactsTable.UseVisualStyleBackColor = false;
+            this.btn_ShowContactsTable.Visible = false;
+            this.btn_ShowContactsTable.Click += new System.EventHandler(this.btn_ShowContactsTable_Click);
+            // 
+            // btn_AddNewContact
+            // 
+            this.btn_AddNewContact.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_AddNewContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_AddNewContact.FlatAppearance.BorderSize = 0;
+            this.btn_AddNewContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_AddNewContact.Font = new System.Drawing.Font("Bahnschrift SemiLight SemiConde", 10F);
+            this.btn_AddNewContact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btn_AddNewContact.Location = new System.Drawing.Point(853, 78);
+            this.btn_AddNewContact.Name = "btn_AddNewContact";
+            this.btn_AddNewContact.Size = new System.Drawing.Size(105, 26);
+            this.btn_AddNewContact.TabIndex = 9;
+            this.btn_AddNewContact.Text = "Add Contact";
+            this.btn_AddNewContact.UseVisualStyleBackColor = false;
+            this.btn_AddNewContact.Click += new System.EventHandler(this.btn_AddNewContact_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.ClientSize = new System.Drawing.Size(1083, 498);
-            this.Controls.Add(this.lbl_CountContacts);
+            this.Controls.Add(this.btn_AddNewContact);
+            this.Controls.Add(this.btn_ShowContactsTable);
+            this.Controls.Add(this.btn_ShowCountriesTable);
+            this.Controls.Add(this.lbl_Count);
             this.Controls.Add(this.lbl_Title3);
             this.Controls.Add(this.lbl_Title2);
             this.Controls.Add(this.lbl_Title);
@@ -178,11 +232,14 @@ namespace WindowsFormContacts_Management_Presentation
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.Label lbl_Title2;
         private System.Windows.Forms.Label lbl_Title3;
-        private System.Windows.Forms.Label lbl_CountContacts;
+        private System.Windows.Forms.Label lbl_Count;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.Button btn_ShowCountriesTable;
+        private System.Windows.Forms.Button btn_ShowContactsTable;
+        private System.Windows.Forms.Button btn_AddNewContact;
     }
 }
 
