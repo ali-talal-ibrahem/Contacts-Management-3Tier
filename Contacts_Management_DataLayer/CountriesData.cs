@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Runtime.Remoting.Messaging;
 
 namespace Contacts_Management_DataLayer
@@ -167,6 +168,110 @@ namespace Contacts_Management_DataLayer
             return isFound;
 
         }
+
+        public static bool IsCountryExistByID(int ID) {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT Found = 1 From Countries WHERE CountryID = @ID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ID", ID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = (reader.HasRows);
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally {
+                connection.Close();
+            }
+
+
+            return isFound;
+        }
+
+        public static bool IsCountryExistByName(string CountryName)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT Found = 1 From Countries WHERE CountryName = @CountryName";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@CountryName", CountryName);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = (reader.HasRows);
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return isFound;
+        }
+
+        public static bool IsCountryExistByCode(string CountryCode)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT Found = 1 From Countries WHERE Code = @CountryCode";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@CountryCode", CountryCode);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = (reader.HasRows);
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return isFound;
+        }
+
 
 
     }
