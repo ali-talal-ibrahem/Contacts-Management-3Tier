@@ -43,6 +43,8 @@ namespace WindowsFormContacts_Management_Presentation
         {
             btn_ShowContactsTable.Visible = true;
             btn_ShowCountriesTable.Visible = false;
+            btn_AddNewContact.Visible = false;
+
 
             dgvAllContacts.DataSource = null;
             dgvAllContacts.DataSource = clsCountry.GetAllCountries();
@@ -55,6 +57,7 @@ namespace WindowsFormContacts_Management_Presentation
         private void btn_ShowContactsTable_Click(object sender, EventArgs e)
         {
             btn_ShowCountriesTable.Visible = true;
+            btn_AddNewContact.Visible = true;
             btn_ShowContactsTable.Visible = false;
 
             dgvAllContacts.DataSource = null;

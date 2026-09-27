@@ -34,15 +34,15 @@ namespace WindowsFormContacts_Management_Presentation
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dgvAllContacts = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.lbl_Title2 = new System.Windows.Forms.Label();
             this.lbl_Title3 = new System.Windows.Forms.Label();
             this.lbl_Count = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_ShowCountriesTable = new System.Windows.Forms.Button();
             this.btn_ShowContactsTable = new System.Windows.Forms.Button();
             this.btn_AddNewContact = new System.Windows.Forms.Button();
@@ -72,6 +72,36 @@ namespace WindowsFormContacts_Management_Presentation
             this.dgvAllContacts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvAllContacts.Size = new System.Drawing.Size(1083, 388);
             this.dgvAllContacts.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 54);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::WindowsFormContacts_Management_Presentation.Properties.Resources.UserEdit_40958;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::WindowsFormContacts_Management_Presentation.Properties.Resources.delete_delete_exit_1577;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // lbl_Title
             // 
@@ -115,41 +145,11 @@ namespace WindowsFormContacts_Management_Presentation
             this.lbl_Count.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Count.Font = new System.Drawing.Font("Anton", 10F);
             this.lbl_Count.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lbl_Count.Location = new System.Drawing.Point(158, 78);
+            this.lbl_Count.Location = new System.Drawing.Point(149, 78);
             this.lbl_Count.Name = "lbl_Count";
             this.lbl_Count.Size = new System.Drawing.Size(31, 21);
             this.lbl_Count.TabIndex = 4;
             this.lbl_Count.Text = "000";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 54);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::WindowsFormContacts_Management_Presentation.Properties.Resources.UserEdit_40958;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = global::WindowsFormContacts_Management_Presentation.Properties.Resources.delete_delete_exit_1577;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // btn_ShowCountriesTable
             // 
@@ -162,7 +162,7 @@ namespace WindowsFormContacts_Management_Presentation
             this.btn_ShowCountriesTable.Name = "btn_ShowCountriesTable";
             this.btn_ShowCountriesTable.Size = new System.Drawing.Size(105, 26);
             this.btn_ShowCountriesTable.TabIndex = 7;
-            this.btn_ShowCountriesTable.Text = "Countacts Table";
+            this.btn_ShowCountriesTable.Text = "Countries Table";
             this.btn_ShowCountriesTable.UseVisualStyleBackColor = false;
             this.btn_ShowCountriesTable.Click += new System.EventHandler(this.btn_ShowCountriesTable_Click);
             // 
@@ -178,7 +178,7 @@ namespace WindowsFormContacts_Management_Presentation
             this.btn_ShowContactsTable.Name = "btn_ShowContactsTable";
             this.btn_ShowContactsTable.Size = new System.Drawing.Size(105, 26);
             this.btn_ShowContactsTable.TabIndex = 8;
-            this.btn_ShowContactsTable.Text = "Countries Table";
+            this.btn_ShowContactsTable.Text = "Contacts Table";
             this.btn_ShowContactsTable.UseVisualStyleBackColor = false;
             this.btn_ShowContactsTable.Visible = false;
             this.btn_ShowContactsTable.Click += new System.EventHandler(this.btn_ShowContactsTable_Click);
