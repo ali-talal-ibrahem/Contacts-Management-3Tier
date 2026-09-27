@@ -39,6 +39,26 @@ namespace Contacts_Management_BusinessLayer
             return clsCountriesData.GetAllCountries();
         }
 
+        public static clsCountry Find(int ID) {
+
+            string CountryName = "";
+            string Code = "";
+            string PhoneCode = "";
+
+            if (clsCountriesData.FindCountryByID(ID, ref CountryName, ref PhoneCode, ref Code))
+            {
+                return new clsCountry(ID, CountryName, PhoneCode, Code);
+            }
+            else {
+                return null;
+            }
+            
+        }
+
+        //public static clsCountry Find(string CountryName) { }
+    
+        //public static clsCountry Find(string Code) { }
+        
 
     }
 }
