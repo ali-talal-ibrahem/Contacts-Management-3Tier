@@ -26,13 +26,17 @@ namespace WindowsFormContacts_Management_Presentation
 
         private void btn_AddNewContact_Click(object sender, EventArgs e)
         {
-            frmAdd_EditContact AddContactForm = new frmAdd_EditContact();
+            frmAdd_EditContact AddContactForm = new frmAdd_EditContact(-1);
             AddContactForm.ShowDialog();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Edit", "Successfuly");
+            int contactID = (int)dgvAllContacts.CurrentRow.Cells[0].Value;
+
+
+            frmAdd_EditContact AddContactForm = new frmAdd_EditContact(contactID);
+            AddContactForm.ShowDialog();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
