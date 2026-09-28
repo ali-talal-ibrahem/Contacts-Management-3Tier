@@ -29,6 +29,7 @@ namespace WindowsFormContacts_Management_Presentation
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
+            notifyIcon1.ShowBalloonTip(2000, "Welcome In App", "Ali Ibrahem", ToolTipIcon.None);
         }
 
         private void StartFormScreen_Load(object sender, EventArgs e)
