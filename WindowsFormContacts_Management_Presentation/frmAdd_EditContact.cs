@@ -36,7 +36,6 @@ namespace WindowsFormContacts_Management_Presentation
 
         }
 
-
         public void _FillCountriesInComboBox()
         {
 
@@ -47,7 +46,6 @@ namespace WindowsFormContacts_Management_Presentation
             }
 
         }
-
 
         private void _Load() 
         {
@@ -89,8 +87,6 @@ namespace WindowsFormContacts_Management_Presentation
 
         }
         
-        
-
         private void frmAdd_EditContact_Load(object sender, EventArgs e)
         {
             _Load();
@@ -125,5 +121,46 @@ namespace WindowsFormContacts_Management_Presentation
             btn_DeletePhoto.Visible = false;
         }
 
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            _Contact.CountryID = clsCountry.Find((cb_Countries.Text)).ID;
+
+            _Contact.FirstName = txb_FirstName.Text;
+            _Contact.LastName = txb_LastName.Text;
+            _Contact.Email = txb_Email.Text;
+            _Contact.Phone = txb_PhoneNumber.Text;
+            _Contact.Address = txb_Address.Text;
+
+            _Contact.DateOfBirth = dtp_DateOfBirth.Value;
+
+            if (pic_photo.ImageLocation != null)
+            {
+                _Contact.ImagePath = pic_photo.ImageLocation;
+            }
+            else {
+                _Contact.ImagePath = "";
+            }
+
+            if (_Contact.Save())
+            {
+
+                MessageBox.Show("Data Saved Successfully.","Successfully!",MessageBoxButtons.OK);
+            }
+            else
+            { 
+                    MessageBox.Show("Error: Data Is not Saved Successfully.");
+            }
+
+            _Mode = _enMode.UpdateContact;
+            this.Text = "Contacts Managment System - Update Contact";
+            lbl_TitlePage.Text = "Update Contact Page";
+            lbl_ID.Text = "ID : " + _Contact.ID;
+
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
