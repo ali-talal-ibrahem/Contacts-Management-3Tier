@@ -73,6 +73,16 @@ namespace WindowsFormContacts_Management_Presentation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StartPhoto {
+            get {
+                object obj = ResourceManager.GetObject("StartPhoto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap UserEdit_40958 {
             get {
                 object obj = ResourceManager.GetObject("UserEdit_40958", resourceCulture);
