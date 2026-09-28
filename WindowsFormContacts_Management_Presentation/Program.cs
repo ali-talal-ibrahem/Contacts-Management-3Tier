@@ -19,7 +19,7 @@ namespace WindowsFormContacts_Management_Presentation
             StartFormScreen splash = new StartFormScreen();
             if (splash.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new MainForm());
+            Application.Run(new MainForm());
             }
         }
     }
