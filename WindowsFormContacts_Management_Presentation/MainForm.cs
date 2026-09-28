@@ -28,6 +28,8 @@ namespace WindowsFormContacts_Management_Presentation
         {
             frmAdd_EditContact AddContactForm = new frmAdd_EditContact(-1);
             AddContactForm.ShowDialog();
+
+            _RefreshContactList();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -37,18 +39,33 @@ namespace WindowsFormContacts_Management_Presentation
 
             frmAdd_EditContact AddContactForm = new frmAdd_EditContact(contactID);
             AddContactForm.ShowDialog();
+
+            _RefreshContactList();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Delete", "Successfuly");
+            int contactID = (int)dgvAllContacts.CurrentRow.Cells[0].Value;
+
+            if (clsContact.DeleteContactByID(contactID))
+            {
+
+                MessageBox.Show("Contact Deleted Successfully.", "Successfully!", MessageBoxButtons.OK);
+                _RefreshContactList();
+            }
+            else
+            {
+                MessageBox.Show("Error: Data Is not Delete Successfully.");
+            }
         }
+        
 
         private void btn_ShowCountriesTable_Click(object sender, EventArgs e)
         {
             btn_ShowContactsTable.Visible = true;
             btn_ShowCountriesTable.Visible = false;
             btn_AddNewContact.Visible = false;
+            contextMenuStrip1.Enabled = false;
 
 
             dgvAllContacts.DataSource = null;
@@ -61,6 +78,7 @@ namespace WindowsFormContacts_Management_Presentation
 
         private void btn_ShowContactsTable_Click(object sender, EventArgs e)
         {
+            contextMenuStrip1.Enabled = true;
             btn_ShowCountriesTable.Visible = true;
             btn_AddNewContact.Visible = true;
             btn_ShowContactsTable.Visible = false;
