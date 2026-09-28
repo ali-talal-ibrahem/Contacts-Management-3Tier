@@ -81,7 +81,7 @@ namespace WindowsFormContacts_Management_Presentation
             if (_Contact.ImagePath != "") {
                 pic_photo.Load(_Contact.ImagePath);
             }
-                btn_AddPhoto.Enabled = (_Contact.ImagePath != "");
+                btn_AddPhoto.Enabled = (_Contact.ImagePath == "");
                 btn_DeletePhoto.Visible = (_Contact.ImagePath != "");
 
             cb_Countries.SelectedIndex = cb_Countries.FindString(clsCountry.Find(_Contact.CountryID).CountryName);
