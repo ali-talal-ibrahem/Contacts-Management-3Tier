@@ -26,7 +26,8 @@ namespace WindowsFormContacts_Management_Presentation
 
         private void btn_AddNewContact_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add", "Successfuly");
+            frmAdd_EditContact AddContactForm = new frmAdd_EditContact();
+            AddContactForm.ShowDialog();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
