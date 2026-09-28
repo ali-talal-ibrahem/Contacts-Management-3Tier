@@ -1,10 +1,6 @@
-<img width="1280" height="300" alt="Contacts Management project banner" src="https://github.com/user-attachments/assets/04aff6af-328a-4869-bb78-5b38b9b9edfc" />
-<h1 align="center">Contacts Management — 3-Tier Architecture</h1>
+<h1 align="center">Contacts Management System</h1>
 
-<p align="center">
-  A C# Windows desktop learning project for managing contacts and looking up country data with ADO.NET and SQL Server.
-</p>
-
+<p align="center">A C# Windows desktop application for managing contacts.</p>
 <p align="center">
   <img alt="C#" src="https://img.shields.io/badge/C%23-language-512BD4" />
   <img alt=".NET Framework 4.8" src="https://img.shields.io/badge/.NET_Framework-4.8-512BD4" />
@@ -14,146 +10,97 @@
 
 ## Overview
 
-Contacts Management separates database access, business objects, and presentation into distinct projects. It demonstrates contact create, read, update, and delete (CRUD) operations and country lookup functionality against SQL Server. Two presentation projects are included: a console-based test harness and a Windows Forms application shell.
+Contacts Management is a three-tier desktop application for managing SQL Server contact records. The Windows Forms client supports creating, viewing, editing, and deleting contacts, and displaying the countries reference table. A separate console project contains manually invoked examples for business-layer operations. All projects target **.NET Framework 4.8**. The repository includes a SQL Server backup named `ContactsDB1` at its root.
 
-> **Current project status:** The console project contains callable database examples, but its sample calls are commented out by default. The WinForms project launches a main form, but its forms are currently scaffolding and are not yet connected to contact or country operations. Country operations currently provide listing, lookup, and existence checks; country create, update, and delete are not implemented.
+## Features
 
-## Architecture & Design
+- Browse contacts in a data grid and see the displayed record count.
+- Add, edit, and delete contacts.
+- Store names, email, phone, address, date of birth, country, and an optional image path.
+- Browse countries and select a country when adding or editing a contact. Country CRUD is not implemented.
+- Console examples cover contact lookup/list/add/update/delete and country list/lookup/existence checks. Calls in `TestConsoleProject.Main` are commented out by default; edit sample values and uncomment the desired call. This is a manual test harness, not an interactive menu or automated test suite.
 
-The solution follows a 3-tier / N-layer design. Both presentation projects reference the Business Logic Layer (BLL), which delegates persistence to the Data Access Layer (DAL). The DAL executes SQL commands against SQL Server.
+Photos are stored as file paths rather than image data. Keep files accessible at their saved paths.
+
+## Architecture
 
 ```text
-+----------------------+       +----------------------+       +----------------------+
-| Presentation Layer   | ----> | Business Logic Layer | ----> | Data Access Layer    |
-| Console test harness |       | Contact/Country      |       | ADO.NET queries      |
-| Windows Forms shell  |       | objects and methods  |       | connection settings  |
-+----------------------+       +----------------------+       +----------+-----------+
-                                                                         |
-                                                                         v
-                                                              +----------------------+
-                                                              | SQL Server           |
-                                                              | ContactsDB1          |
-                                                              +----------------------+
+Windows Forms client ─┐
+                      ├──> Business Logic Layer ───> Data Access Layer ───> SQL Server
+Console examples ─────┘
 ```
 
-| Layer | Project(s) | Responsibility |
+| Layer | Project | Responsibility |
 | --- | --- | --- |
-| Presentation (UI) | `Contacts_Test_Presentation`, `WindowsFormContacts_Management_Presentation` | Console examples and the WinForms application entry point/forms. |
-| Business Logic (BLL) | `Contacts_Management_BusinessLayer` | `clsContact` and `clsCountry` objects and operations; mediates between UI callers and data access. |
-| Data Access (DAL) | `Contacts_Management_DataLayer` | Opens SQL Server connections and executes contact and country queries using ADO.NET. |
-| Database | SQL Server | Stores contacts and country reference data. The repository includes a database backup artifact named `ContactsDB1` in its root. |
+| Presentation | `WindowsFormContacts_Management_Presentation` | Splash screen, contact grid, add/edit form, country list. |
+| Examples | `Contacts_Test_Presentation` | Console examples calling business operations. |
+| Business logic | `Contacts_Management_BusinessLayer` | Contact and country models and operations. |
+| Data access | `Contacts_Management_DataLayer` | ADO.NET queries and connection settings. |
 
-## Features & Technical Highlights
+The presentation projects reference the business layer, which references the data layer.
 
-### Contact management
-
-- Retrieve a contact by ID and list contacts.
-- Add, update, and delete contacts through the BLL/DAL APIs.
-- Store contact details including name, email, phone, address, date of birth, country ID, and optional image path.
-
-### Country lookup
-
-- List countries and find a country by ID or name.
-- Check country existence by ID, name, or country code.
-- Country records are lookup/reference data in the current implementation; country CRUD is not available.
-
-### ADO.NET and data handling
-
-- Uses `SqlConnection`, `SqlCommand`, and `SqlDataReader` for SQL Server access.
-- Uses command parameters in many queries and in contact insert/update operations. **Not every operation is parameterized:** contact deletion currently builds its SQL with an interpolated ID and should be parameterized before use with untrusted input.
-- Database exceptions are caught in the data layer, and some methods return a failure value. Error reporting is limited; some catches suppress exception details.
-- Business-level input validation is not yet comprehensive and should be added before production use.
-
-## Repository Structure
+## Repository layout
 
 ```text
 Contacts-Management-3Tier/
 ├── Contacts_Management_BusinessLayer/
-│   ├── Contact.cs                         # Contact business object and operations
-│   ├── Country.cs                         # Country lookup business object
-│   └── Contacts_Management_BusinessLayer.csproj
 ├── Contacts_Management_DataLayer/
-│   ├── ContactsData.cs                    # Contact SQL operations
-│   ├── CountriesData.cs                   # Country SQL queries and lookups
-│   ├── clsDataAccessSettings.cs           # Active database connection string
-│   └── Contacts_Management_DataLayer.csproj
-├── Contacts_Test_Presentation/
-│   ├── TestConsoleProject.cs              # Console database examples
-│   └── Contacts_Test_Presentation.csproj
+├── Contacts_Test_Presentation/             # Console examples and solution
 ├── WindowsFormContacts_Management_Presentation/
-│   ├── MainForm.cs                        # WinForms main form shell
-│   ├── frmAdd_EditContact.cs              # Add/edit form shell
-│   ├── Program.cs                         # WinForms entry point
-│   └── WindowsFormContacts_Management_Presentation.csproj
-├── ContactsDB1                            # SQL Server backup artifact (no extension)
-├── Digram.png                             # Repository diagram image
-└── Contacts-Management-3Tier.slnx         # Solution file
+├── ContactsDB1                              # SQL Server backup
+├── Digram.png
+└── Contacts-Management-3Tier.slnx            # Empty root solution
 ```
 
-All projects currently target **.NET Framework 4.8**. The root `.slnx` currently contains an empty solution definition, so open and build the project files individually in Visual Studio unless you add the projects to a solution.
+The solution containing all four projects is `Contacts_Test_Presentation/Contacts-Management-3Tier.slnx`. The root `.slnx` is empty. Open the nested solution or open an individual project file in Visual Studio.
 
-## Getting Started
+## Requirements
 
-### Prerequisites
+- Windows and Visual Studio with the **.NET desktop development** workload.
+- **.NET Framework 4.8 Developer Pack**.
+- SQL Server and an account with access to the application database. SSMS is recommended for restoring the backup.
 
-- Windows with **.NET Framework 4.8** (Developer Pack/Targeting Pack for building).
-- **Visual Studio** with the .NET desktop development workload; Visual Studio 2019 or later is suitable.
-- **SQL Server** (local or remote instance) and SQL Server Management Studio (SSMS) for restoring the database backup.
-- Access to a SQL Server login or Windows authentication account with permissions to the database.
+## Setup and run
 
-### 1. Clone the repository
+### 1. Open the solution
 
-```powershell
-git clone https://github.com/ali-talal-ibrahem/Contacts-Management-3Tier.git
-cd Contacts-Management-3Tier
-```
+Open `Contacts_Test_Presentation/Contacts-Management-3Tier.slnx` in Visual Studio, or open the Windows Forms or console `.csproj` directly.
 
-### 2. Restore or prepare the database
+### 2. Restore the database
 
-The repository root contains a SQL Server backup artifact named `ContactsDB1` (without a file extension); no standalone `.sql` schema script is included.
+The root contains a SQL Server backup named `ContactsDB1` without a file extension. No standalone schema script is included.
 
-1. Open SSMS and connect to your SQL Server instance.
-2. Restore the included artifact using **Databases > Restore Database > Device**, and select the repository's `ContactsDB1` file. If SSMS does not recognize the file without an extension, make a copy named `ContactsDB1.bak` and select the copy.
-3. Restore the database with the name **`ContactsDB1`**, or adjust the connection string in the next step to match your chosen database name.
-4. Confirm that the SQL Server account used by the application has permission to access the restored database.
+1. In SSMS, connect to SQL Server and restore `ContactsDB1` using **Databases > Restore Database > Device**. If needed, restore a copy renamed to `ContactsDB1.bak`.
+2. Restore the database as `ContactsDB1`, or update the connection string to match your database name.
+3. Ensure the SQL Server account used by the application can access the database.
 
-If the backup cannot be restored in your SQL Server version/environment, create a compatible database with the expected `Contacts` and `Countries` tables before running the application.
+The application queries `Contacts` and `Countries`; another database must provide compatible tables and columns.
 
-### 3. Configure the database connection
+### 3. Configure database access
 
-The checked-in `App.config` files currently specify the .NET runtime only; the active connection string is in `Contacts_Management_DataLayer/clsDataAccessSettings.cs`. Update that value to match your SQL Server instance and authentication method. For example, for a local instance using Windows authentication:
+The active connection string is hard-coded in `Contacts_Management_DataLayer/clsDataAccessSettings.cs`; `App.config` does not contain a connection string. Set it for your SQL Server instance and authentication method. Example for local Windows authentication:
 
 ```csharp
 static public string ConnectionString = "Server=.;Database=ContactsDB1;Integrated Security=True";
 ```
 
-For SQL authentication, use your own server, login, and password. Do not commit real credentials to source control. The file `clsDataAccessSettings - For You.cs` is an unused template; the application uses `clsDataAccessSettings.cs`.
+For SQL authentication, use your own values and do not commit credentials. `clsDataAccessSettings - For You.cs` is a template, not the active settings class.
 
-### 4. Build and run
+### 4. Run the Windows Forms app
 
-1. Open the `.csproj` files in Visual Studio (or create a solution and add all four projects). Build the console and WinForms projects; their project references pull in the BLL and DAL dependencies.
-2. To run the **console examples**, set `Contacts_Test_Presentation` as the startup project and start debugging. The sample invocations in `TestConsoleProject.Main` are commented out by default; uncomment the example operation(s) you want to run, then rebuild and start the project. This is a test harness rather than an interactive menu-driven console UI.
-3. To run the **WinForms shell**, set `WindowsFormContacts_Management_Presentation` as the startup project and start debugging. The main form currently opens without contact-management actions wired up.
+Set `WindowsFormContacts_Management_Presentation` as the startup project and build/run. A splash screen appears before the main window. Switch between contacts and countries; use **Add New Contact** or right-click a contact to edit/delete it.
 
-## Application Workflow
+### 5. Run console examples
 
-### Console test harness
+Set `Contacts_Test_Presentation` as the startup project. Uncomment the desired call in `TestConsoleProject.Main`, update sample values or IDs, then build and run. Use a development database for operations that modify or delete records.
 
-The console project contains examples for contact lookup/listing/creation/update/deletion and country listing/lookup/existence checks. Edit the sample data or IDs in `TestConsoleProject.cs`, uncomment the desired call in `Main`, and run the project after configuring SQL Server access. Use a development database because these operations can change or delete records.
+## Implementation notes
 
-### Windows Forms
-
-The WinForms entry point opens `MainForm`. The add/edit contact form and main form are currently presentation scaffolding; they do not yet call the BLL. Wiring up data grids, input controls, validation, and save/delete actions is future work.
-
-## Future Enhancements
-
-- Build a functional WinForms workflow and connect forms to the BLL.
-- Add country create, update, and delete operations if country maintenance is required.
-- Move connection strings into configuration or secure secret storage; remove embedded credentials.
-- Parameterize every SQL command and improve structured error logging and user-facing feedback.
-- Add comprehensive input validation and automated tests.
-- Consider asynchronous database access (`async`/`await`), an EF Core implementation, or an additional WPF presentation client.
+- Input validation and user-facing database error reporting are limited; this is a learning project.
+- Contact deletion currently interpolates the ID into SQL instead of using a parameter. Parameterize it before accepting untrusted input.
+- The connection string is stored in source code. Move credentials to protected configuration or a secret store before sharing or deploying.
+- No automated test project is included; console examples are manual.
 
 ## License
 
-No `LICENSE` file is currently included. Until the repository owner adds one, the project has no explicit open-source license; reuse and redistribution are subject to the default copyright laws. Add a license file (for example, MIT) to formally permit open-source use.
+No `LICENSE` file is included, so there is no explicit open-source license. Add a license file to define reuse and redistribution terms.
