@@ -40,7 +40,7 @@ namespace WindowsFormContacts_Management_Presentation
         {
             timer1.Stop();
             this.DialogResult = DialogResult.OK;
-            this.Close();
+            this.Close(); 
         }
     }
 }
