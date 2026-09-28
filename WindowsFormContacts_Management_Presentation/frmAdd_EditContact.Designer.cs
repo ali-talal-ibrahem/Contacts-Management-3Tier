@@ -47,12 +47,11 @@
             this.dtp_DateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.cb_Countries = new System.Windows.Forms.ComboBox();
             this.lbl_ID = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pic_photo = new System.Windows.Forms.PictureBox();
             this.btn_AddPhoto = new System.Windows.Forms.Button();
-            this.btn_EditPhoto = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_DeletePhoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_photo)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -268,7 +267,6 @@
             this.cb_Countries.Size = new System.Drawing.Size(179, 31);
             this.cb_Countries.Sorted = true;
             this.cb_Countries.TabIndex = 5;
-            this.cb_Countries.SelectedIndexChanged += new System.EventHandler(this.cb_Countries_SelectedIndexChanged);
             // 
             // lbl_ID
             // 
@@ -282,15 +280,15 @@
             this.lbl_ID.TabIndex = 10;
             this.lbl_ID.Text = "ID : ???";
             // 
-            // pictureBox2
+            // pic_photo
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(898, 130);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(163, 171);
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pic_photo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.pic_photo.Location = new System.Drawing.Point(898, 130);
+            this.pic_photo.Name = "pic_photo";
+            this.pic_photo.Size = new System.Drawing.Size(163, 171);
+            this.pic_photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_photo.TabIndex = 11;
+            this.pic_photo.TabStop = false;
             // 
             // btn_AddPhoto
             // 
@@ -299,46 +297,30 @@
             this.btn_AddPhoto.FlatAppearance.BorderSize = 0;
             this.btn_AddPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_AddPhoto.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btn_AddPhoto.Location = new System.Drawing.Point(930, 130);
+            this.btn_AddPhoto.Location = new System.Drawing.Point(968, 307);
             this.btn_AddPhoto.Name = "btn_AddPhoto";
-            this.btn_AddPhoto.Size = new System.Drawing.Size(99, 29);
+            this.btn_AddPhoto.Size = new System.Drawing.Size(93, 29);
             this.btn_AddPhoto.TabIndex = 12;
             this.btn_AddPhoto.Text = "Add Photo";
             this.btn_AddPhoto.UseVisualStyleBackColor = false;
             this.btn_AddPhoto.Click += new System.EventHandler(this.btn_AddPhoto_Click);
             // 
-            // btn_EditPhoto
+            // btn_DeletePhoto
             // 
-            this.btn_EditPhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(68)))));
-            this.btn_EditPhoto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_EditPhoto.FlatAppearance.BorderSize = 0;
-            this.btn_EditPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_EditPhoto.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btn_EditPhoto.Location = new System.Drawing.Point(997, 307);
-            this.btn_EditPhoto.Name = "btn_EditPhoto";
-            this.btn_EditPhoto.Size = new System.Drawing.Size(64, 29);
-            this.btn_EditPhoto.TabIndex = 12;
-            this.btn_EditPhoto.Text = "Edit";
-            this.btn_EditPhoto.UseVisualStyleBackColor = false;
-            this.btn_EditPhoto.Visible = false;
-            this.btn_EditPhoto.Click += new System.EventHandler(this.btn_EditPhoto_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F);
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(927, 307);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 29);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_DeletePhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_DeletePhoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_DeletePhoto.FlatAppearance.BorderSize = 0;
+            this.btn_DeletePhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_DeletePhoto.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btn_DeletePhoto.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_DeletePhoto.Location = new System.Drawing.Point(898, 307);
+            this.btn_DeletePhoto.Name = "btn_DeletePhoto";
+            this.btn_DeletePhoto.Size = new System.Drawing.Size(64, 29);
+            this.btn_DeletePhoto.TabIndex = 13;
+            this.btn_DeletePhoto.Text = "Delete";
+            this.btn_DeletePhoto.UseVisualStyleBackColor = false;
+            this.btn_DeletePhoto.Visible = false;
+            this.btn_DeletePhoto.Click += new System.EventHandler(this.btn_DeletePhoto_Click);
             // 
             // frmAdd_EditContact
             // 
@@ -346,10 +328,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.ClientSize = new System.Drawing.Size(1083, 498);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn_EditPhoto);
+            this.Controls.Add(this.btn_DeletePhoto);
             this.Controls.Add(this.btn_AddPhoto);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pic_photo);
             this.Controls.Add(this.lbl_ID);
             this.Controls.Add(this.cb_Countries);
             this.Controls.Add(this.dtp_DateOfBirth);
@@ -374,7 +355,7 @@
             this.Text = "Contacts Managment System - Add Contact";
             this.Load += new System.EventHandler(this.frmAdd_EditContact_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_photo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,9 +381,8 @@
         private System.Windows.Forms.DateTimePicker dtp_DateOfBirth;
         private System.Windows.Forms.ComboBox cb_Countries;
         private System.Windows.Forms.Label lbl_ID;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pic_photo;
         private System.Windows.Forms.Button btn_AddPhoto;
-        private System.Windows.Forms.Button btn_EditPhoto;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_DeletePhoto;
     }
 }
