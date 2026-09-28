@@ -16,7 +16,11 @@ namespace WindowsFormContacts_Management_Presentation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            StartFormScreen splash = new StartFormScreen();
+            if (splash.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new MainForm());
+            }
         }
     }
 }
