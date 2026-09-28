@@ -50,6 +50,8 @@
             this.pic_photo = new System.Windows.Forms.PictureBox();
             this.btn_AddPhoto = new System.Windows.Forms.Button();
             this.btn_DeletePhoto = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Close = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_photo)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +62,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureBox1.Location = new System.Drawing.Point(0, 110);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1083, 388);
+            this.pictureBox1.Size = new System.Drawing.Size(1104, 388);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -283,7 +285,7 @@
             // pic_photo
             // 
             this.pic_photo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.pic_photo.Location = new System.Drawing.Point(898, 130);
+            this.pic_photo.Location = new System.Drawing.Point(929, 130);
             this.pic_photo.Name = "pic_photo";
             this.pic_photo.Size = new System.Drawing.Size(163, 171);
             this.pic_photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -297,10 +299,10 @@
             this.btn_AddPhoto.FlatAppearance.BorderSize = 0;
             this.btn_AddPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_AddPhoto.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btn_AddPhoto.Location = new System.Drawing.Point(968, 307);
+            this.btn_AddPhoto.Location = new System.Drawing.Point(999, 307);
             this.btn_AddPhoto.Name = "btn_AddPhoto";
             this.btn_AddPhoto.Size = new System.Drawing.Size(93, 29);
-            this.btn_AddPhoto.TabIndex = 12;
+            this.btn_AddPhoto.TabIndex = 7;
             this.btn_AddPhoto.Text = "Add Photo";
             this.btn_AddPhoto.UseVisualStyleBackColor = false;
             this.btn_AddPhoto.Click += new System.EventHandler(this.btn_AddPhoto_Click);
@@ -313,7 +315,7 @@
             this.btn_DeletePhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DeletePhoto.Font = new System.Drawing.Font("Calibri", 12F);
             this.btn_DeletePhoto.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_DeletePhoto.Location = new System.Drawing.Point(898, 307);
+            this.btn_DeletePhoto.Location = new System.Drawing.Point(929, 307);
             this.btn_DeletePhoto.Name = "btn_DeletePhoto";
             this.btn_DeletePhoto.Size = new System.Drawing.Size(64, 29);
             this.btn_DeletePhoto.TabIndex = 13;
@@ -322,12 +324,46 @@
             this.btn_DeletePhoto.Visible = false;
             this.btn_DeletePhoto.Click += new System.EventHandler(this.btn_DeletePhoto_Click);
             // 
+            // btn_Save
+            // 
+            this.btn_Save.BackColor = System.Drawing.Color.Green;
+            this.btn_Save.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Save.FlatAppearance.BorderSize = 0;
+            this.btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Save.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btn_Save.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_Save.Location = new System.Drawing.Point(21, 448);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(64, 29);
+            this.btn_Save.TabIndex = 8;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = false;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_Close
+            // 
+            this.btn_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Close.FlatAppearance.BorderSize = 0;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Close.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btn_Close.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_Close.Location = new System.Drawing.Point(91, 448);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(64, 29);
+            this.btn_Close.TabIndex = 14;
+            this.btn_Close.Text = "Close";
+            this.btn_Close.UseVisualStyleBackColor = false;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            // 
             // frmAdd_EditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.ClientSize = new System.Drawing.Size(1083, 498);
+            this.ClientSize = new System.Drawing.Size(1104, 498);
+            this.Controls.Add(this.btn_Close);
+            this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.btn_DeletePhoto);
             this.Controls.Add(this.btn_AddPhoto);
             this.Controls.Add(this.pic_photo);
@@ -384,5 +420,7 @@
         private System.Windows.Forms.PictureBox pic_photo;
         private System.Windows.Forms.Button btn_AddPhoto;
         private System.Windows.Forms.Button btn_DeletePhoto;
+        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.Button btn_Close;
     }
 }
