@@ -1,3 +1,5 @@
+<img width="1920" height="1080" alt="Contacts" src="https://github.com/user-attachments/assets/78e50851-4ebf-487e-9968-41fe9db86f93" />
+
 <h1 align="center">Contacts Management System</h1>
 
 <p align="center">A C# Windows desktop application for managing contacts.</p>
